@@ -1,9 +1,6 @@
 package com.srinivas.springbootJPA.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Employee {
@@ -45,6 +42,18 @@ public class Employee {
 	private String lastname;
 	private String email;
 	private String mobilenumber;
+
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)// cascadeType specifies the type of cascade to be applied to the relationship. In this case, it is CascadeType.ALL, which means that all the changes to the Employee entity will be propagated to the Passport entity.ascade(cascadeType))// mappedBy is used to specify the name of the property on the other side of the relationship. In this case, the name of the property on the Passport entity is "employee".
+	private Passport passport;
+
+	public Passport getPassport() {
+		return passport;
+	}
+
+	public void setPassport(Passport passport) {
+		this.passport = passport;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email

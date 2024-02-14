@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 
 import com.srinivas.springbootJPA.Entity.Employee;
 import com.srinivas.springbootJPA.Repository.EmployeeRepository;
+
+import java.util.List;
+
 @Component
 public class  EmployeeServiceImpl implements EmployeeService {
     
@@ -19,8 +22,24 @@ public class  EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
 		return employeeRepository.save(employee);
 	}
+
+	@Override
+	public List<Employee> findAllEmployees() {
+		return employeeRepository.findAll();
+	}
+
+	@Override
+	public Employee updateEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+	}
+
+	@Override
+	public void deleteEmployee(Integer id) {
+		employeeRepository.deleteById(id);
+	}
+
+
 
 }
